@@ -9,8 +9,9 @@ import 间.安卓.工具.提示;
 import 间.安卓.组件.界面;
 import 间.工具.时间;
 import 间.接口.调用;
+import 间.安卓.视图.扩展.设置视图;
 
-public class 主界面 extends 界面 {
+public class 主页 extends 界面 {
 
     private 布局_主页 布局;
 
@@ -23,6 +24,12 @@ public class 主界面 extends 界面 {
         布局.登录按钮.置单击事件(调用.配置(this, "登录"));
 
         检查用户();
+        
+        设置视图 $设置 = new 设置视图(此);
+        $设置.置标题("设置");
+        $设置.开关设置("测试设置","副标题",false,null);
+        $设置.跳转设置("测试设置","副标题",null);
+        $设置.打开(此);
 
     }
 

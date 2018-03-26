@@ -1,4 +1,4 @@
-package hl4a.app;
+package hl4a.root;
 
 import android.net.*;
 import android.os.*;
@@ -6,7 +6,7 @@ import 间.安卓.组件.*;
 import 间.安卓.资源.布局.*;
 import 间.安卓.工具.文件;
 import 间.安卓.工具.线程;
-import hl4a.app.界面.主页;
+import hl4a.root.界面.主页;
 
 public class LaunchPad extends 启动界面 {
 
