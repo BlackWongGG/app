@@ -1,17 +1,23 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-buildscript {
-    repositories {
-        jcenter()
+apply plugin: 'com.android.application'
+
+android {
+
+    compileSdkVersion 19
+    buildToolsVersion '21.1.0'
+
+    defaultConfig {
+        applicationId 'hl4a.app'
+       	minSdkVersion 14
+       	targetSdkVersion 23
+        versionCode 109
+        versionName '2.1'
     }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.0'
-    }
+    
 }
 
-allprojects {
-    repositories {
-        maven { url "http://mvn.leancloud.cn/nexus/content/repositories/public" }
-        jcenter()
-        maven { url "https://jitpack.io" }
-    }
+dependencies {
+    compile project (':工具/安卓')
+    compile project(':工具/图灵')
+    compile project (':工具/网络')
+    compile project (':工具/后端/基本')
 }
