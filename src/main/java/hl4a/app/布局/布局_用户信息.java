@@ -9,6 +9,7 @@ import 间.安卓.资源.布局.布局_基本界面;
 import 间.安卓.视图.扩展.设置组;
 import android.preference.PreferenceActivity;
 import 间.安卓.视图.扩展.设置视图;
+import 间.安卓.后端.视图.留言板;
 
 public class 布局_用户信息 extends 布局_基本界面 {
     
@@ -19,8 +20,12 @@ public class 布局_用户信息 extends 布局_基本界面 {
     public 文本视图 用户名;
     public 文本视图 签名;
     
+    public 高级滑动 滚动;
+    
     public 设置组 设置;
     public 设置视图 用户账号;
+    
+    public 留言板 留言;
     
     public 布局_用户信息(界面 $上下文) {
         super($上下文);
@@ -29,7 +34,6 @@ public class 布局_用户信息 extends 布局_基本界面 {
         用户底层.置背景颜色("白色");
         用户底层.置填充("16dp");
         用户底层.置高度("自动");
-        用户底层.置阴影("4dp");
         用户底层.置重力("中间垂直");
         用户底层.置方向("左右");
 
@@ -46,8 +50,16 @@ public class 布局_用户信息 extends 布局_基本界面 {
         签名 = new 文本视图(用户内容);
         签名.置上边距("4dp");
         
-        设置 = new 设置组(this);
+        滑动 = new 高级滑动(this);
+        滑动.切换();
+        
+        设置 = new 设置组(getContext());
         用户账号 = 设置.新建设置("用户账号");
+        
+        留言 = new 留言板(getContext());
+        
+        滑动.添加("留言",留言);
+        滑动.添加("设置",设置);
     }
     
 }

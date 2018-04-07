@@ -12,8 +12,10 @@ import 间.工具.时间;
 import 间.接口.调用;
 import 间.接口.返回值;
 import 间.工具.字符;
-import 间.安卓.工具.拦截;
 import 间.接口.方法;
+import 间.安卓.后端.内容.关注;
+import 间.接口.回调方法;
+import 间.安卓.后端.内容.留言;
 
 public class 主页 extends 界面 {
 
@@ -29,15 +31,9 @@ public class 主页 extends 界面 {
             用户.取当前用户().检查(调用.代理(this, "检查回调"));
         }
         
-        拦截.替换方法(主页.class, "测试方法",new 方法() {
-                @Override
-                public Object 调用(Object[] $参数) {
-                     提示.普通("我是新方法");
-                    return null;
-                }
-            });
         //图灵.请求("爱因斯坦获得了那一年的诺贝尔物理学奖？",调用.代理(this,"回调"));
         测试方法();
+        //new 留言(用户.取当前用户(),用户.取当前用户(),"留言测试").保存();
    }
    
    public void 测试方法() {
@@ -45,8 +41,10 @@ public class 主页 extends 界面 {
    }
     
     public void 回调(返回值<String> $返回) {
-        if ($返回.成功()) {
-            提示.普通($返回.取内容());
+        if (!$返回.成功()) {
+            提示.普通($返回.取错误信息());
+        } else {
+            
         }
     }
 
