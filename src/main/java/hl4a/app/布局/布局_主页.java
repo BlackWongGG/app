@@ -13,6 +13,7 @@ import 间.安卓.视图.开关视图;
 import 间.安卓.视图.文本视图;
 import 间.安卓.视图.编辑框;
 import 间.安卓.视图.圆形图;
+import 间.安卓.内容.界面;
 
 public class 布局_主页 extends 布局_基本界面 {
 
@@ -30,12 +31,12 @@ public class 布局_主页 extends 布局_基本界面 {
     public 文本视图 用户名;
     public 文本视图 用户提示;
 
-    public 布局_主页(Context $上下文) {
+    public 布局_主页(界面 $上下文) {
         super($上下文);
-        标题.置阴影(0);
-        滑动 = new 高级滑动(底层);
+        $上下文.取标题栏().置阴影(0);
+        滑动 = new 高级滑动(this);
 
-        我的 = new 线性布局($上下文);
+        我的 = new 线性布局(getContext());
         我的.置背景颜色(颜色.白烟);
 
         用户底层 = new 线性布局(我的);

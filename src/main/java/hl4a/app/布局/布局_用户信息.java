@@ -1,11 +1,14 @@
 package hl4a.app.布局;
 
-import android.content.Context;
+import 间.安卓.内容.界面;
 import 间.安卓.视图.圆形图;
 import 间.安卓.视图.扩展.高级滑动;
 import 间.安卓.视图.文本视图;
 import 间.安卓.视图.线性布局;
 import 间.安卓.资源.布局.布局_基本界面;
+import 间.安卓.视图.扩展.设置组;
+import android.preference.PreferenceActivity;
+import 间.安卓.视图.扩展.设置视图;
 
 public class 布局_用户信息 extends 布局_基本界面 {
     
@@ -16,12 +19,13 @@ public class 布局_用户信息 extends 布局_基本界面 {
     public 文本视图 用户名;
     public 文本视图 签名;
     
+    public 设置组 设置;
+    public 设置视图 用户账号;
     
-    public 布局_用户信息(Context $上下文) {
+    public 布局_用户信息(界面 $上下文) {
         super($上下文);
-        标题.置标题("个人资料");
-        
-        用户底层 = new 线性布局(底层);
+        $上下文.置标题("个人资料");
+        用户底层 = new 线性布局(this);
         用户底层.置背景颜色("白色");
         用户底层.置填充("16dp");
         用户底层.置高度("自动");
@@ -41,8 +45,9 @@ public class 布局_用户信息 extends 布局_基本界面 {
 
         签名 = new 文本视图(用户内容);
         签名.置上边距("4dp");
-        签名.置文本("这个人还没有签名。");
-        滑动 = new 高级滑动(底层);
+        
+        设置 = new 设置组(this);
+        用户账号 = 设置.新建设置("用户账号");
     }
     
 }

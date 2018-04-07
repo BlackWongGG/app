@@ -1,20 +1,19 @@
 package hl4a.app.界面;
 
-import android.graphics.Bitmap;
 import android.os.Bundle;
+import com.avos.avoscloud.后端错误;
 import hl4a.app.布局.布局_主页;
+import 间.安卓.内容.界面;
 import 间.安卓.后端.用户;
 import 间.安卓.后端.界面.登录界面;
 import 间.安卓.工具.提示;
-import 间.安卓.组件.界面;
+import 间.安卓.工具.网络;
 import 间.工具.时间;
 import 间.接口.调用;
-import 间.安卓.视图.扩展.设置视图;
 import 间.接口.返回值;
-import 间.安卓.工具.网络;
-import com.avos.avoscloud.后端错误;
-import com.avos.avoscloud.AVUser;
-import 间.安卓.工具.图灵;
+import 间.工具.字符;
+import 间.安卓.工具.拦截;
+import 间.接口.方法;
 
 public class 主页 extends 界面 {
 
@@ -22,20 +21,27 @@ public class 主页 extends 界面 {
 
     @Override
     public void 界面创建事件(Bundle $恢复) {
-        打开布局(new 布局_主页(此));
-
-        布局 = 取视图();
-
+        super.界面创建事件($恢复);
+        布局 = 打开布局(new 布局_主页(this));
         布局.登录按钮.置单击事件(调用.配置(this, "登录"));
-
         检查用户();
-
         if (用户.已登录()) {
             用户.取当前用户().检查(调用.代理(this, "检查回调"));
         }
         
-        图灵.请求("爱因斯坦获得了那一年的诺贝尔物理学奖？",调用.代理(this,"回调"));
-
+        拦截.替换方法(主页.class, "测试方法",new 方法() {
+                @Override
+                public Object 调用(Object[] $参数) {
+                     提示.普通("我是新方法");
+                    return null;
+                }
+            });
+        //图灵.请求("爱因斯坦获得了那一年的诺贝尔物理学奖？",调用.代理(this,"回调"));
+        测试方法();
+   }
+   
+   public void 测试方法() {
+       提示.普通("我是原方法");
    }
     
     public void 回调(返回值<String> $返回) {
