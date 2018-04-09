@@ -1,20 +1,18 @@
 package hl4a.app.界面;
 
 import android.os.Bundle;
-import com.avos.avoscloud.后端错误;
 import hl4a.app.布局.布局_用户信息;
 import 间.安卓.内容.界面;
 import 间.安卓.后端.用户;
 import 间.安卓.工具.图片;
 import 间.安卓.工具.提示;
-import 间.接口.调用;
-import 间.接口.返回值;
-import 间.接口.方法;
-import 间.安卓.工具.设备;
 import 间.安卓.工具.线程;
-import 间.安卓.工具.文件;
+import 间.安卓.工具.设备;
 import 间.安卓.工具.转换;
 import 间.工具.字节;
+import 间.接口.方法;
+import 间.接口.调用;
+import 间.接口.返回值;
 
 public class 用户信息界面 extends 界面 {
 
@@ -102,8 +100,7 @@ public class 用户信息界面 extends 界面 {
                         提示.普通("头像更换成功 ~");
                         当前.显示头像(布局.头像, "#assets/user.png");
                     } else {
-                        后端错误 $错误 = $更换.取错误();
-                        提示.普通($错误.取错误码() + " : " + $错误.取错误信息());
+                        提示.普通($更换.取错误信息());
                     }
                 }
             });

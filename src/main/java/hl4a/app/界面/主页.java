@@ -1,7 +1,6 @@
 package hl4a.app.界面;
 
 import android.os.Bundle;
-import com.avos.avoscloud.后端错误;
 import hl4a.app.布局.布局_主页;
 import 间.安卓.内容.界面;
 import 间.安卓.后端.用户;
@@ -11,11 +10,6 @@ import 间.安卓.工具.网络;
 import 间.工具.时间;
 import 间.接口.调用;
 import 间.接口.返回值;
-import 间.工具.字符;
-import 间.接口.方法;
-import 间.安卓.后端.内容.关注;
-import 间.接口.回调方法;
-import 间.安卓.后端.内容.留言;
 
 public class 主页 extends 界面 {
 
@@ -66,7 +60,7 @@ public class 主页 extends 界面 {
             用户.登出();
             布局.注册底层.显示();
             布局.用户底层.隐藏();
-            提示.警告(((后端错误)$结果.取错误()).取错误信息());
+            提示.警告($结果.取错误信息());
         } else if (网络.网络可用()) {
             用户.取当前用户().显示头像(布局.头像, "#assets/user.png");
         }
