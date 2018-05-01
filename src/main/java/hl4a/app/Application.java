@@ -6,6 +6,7 @@ import 间.安卓.工具.颜色;
 import hl4a.app.界面.主页;
 import hl4a.ex.HEx;
 import android.content.Context;
+import 间.安卓.后端.后端;
 
 public class Application extends 基本应用 {
 
@@ -15,14 +16,9 @@ public class Application extends 基本应用 {
     }
     
     @Override
-    public void onCreate() {
-        HEx.getInstnce().install();
-        super.onCreate();
-    }
-
-    @Override
     public void 应用创建事件() {
         主题.置颜色(颜色.靛蓝);
+        后端.初始化();
     }
 
 }

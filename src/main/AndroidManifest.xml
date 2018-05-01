@@ -20,6 +20,11 @@
                 <data android:mimeType="*/*" />
             </intent-filter>
         </activity>
-
+        <meta-data
+            android:name="com.droi.sdk.application_id"
+            android:value="zfnumbzhSh4xcOMFUqYI70AmnEJq680hlQAAL8gp" />
+        <meta-data
+            android:name="com.droi.sdk.channel_name"
+            android:value="Test" />
     </application>
 </manifest>

@@ -5,7 +5,7 @@ import hl4a.app.布局.布局_主页;
 import 间.安卓.内容.界面;
 import 间.安卓.工具.提示;
 import 间.工具.时间;
-import hl4a.app.FileSelector;
+import hl4a.app.数据.用户;
 
 public class 主页 extends 界面 {
 
@@ -14,10 +14,25 @@ public class 主页 extends 界面 {
     @Override
     public void 界面创建事件(Bundle $恢复) {
         super.界面创建事件($恢复);
+        
         布局 = 打开布局(new 布局_主页(this));
-        置标题("标题");
-        取标题栏().置副标题("副标题");
-        跳转界面(FileSelector.class);
+        
+        置标题("HL4A");
+        置副标题("好消息 不行接受不了！");
+        
+        int i = 0/0;
+        
+        重载();
+    }
+    
+    public void 重载() {
+        布局.我的.用户.重载(用户.取当前用户());
+    }
+
+    @Override
+    public void 界面刷新事件() {
+        super.界面刷新事件();
+        重载();
     }
 
     private long 返回时间 = 时间.时间戳() - 23333;
