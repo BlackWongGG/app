@@ -5,7 +5,9 @@ import hl4a.app.布局.布局_主页;
 import 间.安卓.内容.界面;
 import 间.安卓.工具.提示;
 import 间.工具.时间;
-import hl4a.app.数据.用户;
+import 间.接口.回调方法;
+import 间.接口.返回值;
+import 间.安卓.工具.网络;
 
 public class 主页 extends 界面 {
 
@@ -20,26 +22,8 @@ public class 主页 extends 界面 {
         置标题("HL4A");
         置副标题("好消息 不行接受不了！");
 
-        布局.我的.提示.置单击事件(配置("登录"));
-
-        重载();
     }
     
-    void 登录() {
-        跳转界面(登录界面.class);
-    }
-    
-
-    void 重载() {
-        布局.我的.重载(用户.取当前用户());
-    }
-
-    @Override
-    public void 界面刷新事件() {
-        super.界面刷新事件();
-        重载();
-    }
-
     private long 返回时间 = 时间.时间戳() - 23333;
 
     @Override

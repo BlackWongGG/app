@@ -11,13 +11,12 @@ android {
        	targetSdkVersion 23
         versionCode 109
         versionName '2.1'
-        
     }
     
 }
 
 dependencies {
     compile project (':HL4A/安卓')
-    compile project (':HL4A/后端')
+    compile project (':HL4A/网络')
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }

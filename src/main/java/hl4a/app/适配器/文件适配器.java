@@ -19,9 +19,11 @@ import 间.接口.方法;
 import 间.收集.哈希表;
 import 间.收集.对象哈希表;
 import android.os.AsyncTask;
+import 间.安卓.工具.调用;
 
 public class 文件适配器 extends 基本适配器<布局_适配器_文件> {
 
+    private 线程池 加载 = new 线程池(5);
     private 图标工厂 图标;
     private String 当前目录;
     private FileSelector 界面;
@@ -37,24 +39,17 @@ public class 文件适配器 extends 基本适配器<布局_适配器_文件> {
     private Bitmap 图标_压缩包;
 
     private 哈希表<String,Bitmap> 对应表 = new 哈希表<>();
-    
+
     public 文件适配器(FileSelector $上下文, 基本列表 $列表) {
-        super();
+        super($上下文);
         界面 = $上下文;
 
         $列表.置项目单击事件(new 方法() {
                 @Override
                 public Object 调用(Object[] $参数) throws Exception {
                     布局_适配器_文件 $视图 = (布局_适配器_文件)$参数[1];
-                    if ($视图.文件 == null) {
-                        String $上级 = 文件.取文件对象(当前目录).getParent();
-                        if (!文件.取可读($上级)) {
-                            提示.普通("上级目录不可读");
-                            重置("%");
-                            return null;
-                        } else {
-                            重置($上级);
-                        }
+                    if ($视图.文件 == null && 可回退()) {
+                        回退();
                     } else if ($视图.文件.isDirectory()) {
                         重置($视图.文件.getPath());
                     } else {
@@ -106,7 +101,23 @@ public class 文件适配器 extends 基本适配器<布局_适配器_文件> {
 
 
     }
-    
+
+    public void 回退() {
+        String $上级 = 文件.取文件对象(当前目录).getParent();
+        if (!文件.取可读($上级)) {
+            提示.普通("上级目录不可读");
+            重置("%");
+            return;
+        } else {
+            重置($上级);
+        }
+    }
+
+    public boolean 可回退() {
+        String $上级 = 文件.取文件对象(当前目录).getParent();
+        return 文件.取可读($上级);
+    }
+
     private void 设置(Bitmap $图标, String... $类型) {
         for (String $单个 : $类型) {
             对应表.设置($单个, $图标);
@@ -119,6 +130,10 @@ public class 文件适配器 extends 基本适配器<布局_适配器_文件> {
     }
 
     public void 重置(String $目录) {
+        调用.异步(this, "同步重置", $目录);
+    }
+
+    public void 同步重置(String $目录) {
         if (!文件.取可读($目录)) {
             提示.普通("找不到文件夹/不可读");
             return;
@@ -159,27 +174,22 @@ public class 文件适配器 extends 基本适配器<布局_适配器_文件> {
             Bitmap $图标 = 取图标($文件);
             $视图.图标.置图片($图标);
             if ($图标 == 图标_图片) {
-                new 方法(处理.异步) {
-                    @Override
-                    public Object 调用(Object[] $参数) throws Exception {
-                        final 引用<Bitmap> $图片 = new 引用<Bitmap>(图片.读取($文件.getPath()));
-                        if ($图片.读取() != null) {
-                            new 方法(处理.主线程) {
-                                @Override
-                                public Object 调用(Object[] $参数) throws Exception {
-                                    $视图.图标.置图片($图片.读取());
-                                    return null;
-                                }
-                            }.执行();
-                        }
-                        return null;
-                    }
-                }.执行();
+                调用.线程池(加载, this, "加载图标", $视图, $文件.getPath());
+            } else if ($图标 == 图标_视频) {
+                调用.线程池(加载, this, "加载视频图标", $视图, $文件.getPath());
             }
 
             $视图.修改时间和大小.置文本(时间.格式($文件.lastModified(), "默认") + " " + 文件.格式大小(文件.取大小($文件.getPath())));
         }
         return $视图;
+    }
+
+    public void 加载图标(布局_适配器_文件 $视图, String $地址) {
+        $视图.图标.置图片(图片.取缩略图($地址, "40dp", "40dp").读取());
+    }
+
+    public void 加载视频图标(布局_适配器_文件 $视图, String $地址) {
+        $视图.图标.置图片(图片.取缩略图(图片.取视频缩略图($地址, false).读取(), "40dp", "40dp", true).读取());
     }
 
 }

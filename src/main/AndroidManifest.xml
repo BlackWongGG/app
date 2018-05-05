@@ -11,20 +11,157 @@
             </intent-filter>
         </activity>
         <activity
-            android:label="用HL4A选择文件"
-            android:name=".FileSelector">
+            android:label="HL4A浏览器"
+            android:name=".WebBrowser" 
+            android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.GET_CONTENT" />
+                <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.OPENABLE" />
-                <data android:mimeType="*/*" />
+                <category  android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:scheme="about" />
+                <data android:scheme="javascript" />
+                <data android:scheme="hl4a" />
+            </intent-filter>
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.VIEW" />
+                <category
+                    android:name="android.intent.category.BROWSABLE" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="file" />
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:mimeType="text/html" />
+                <data android:mimeType="text/plain" />
+                <data
+                    android:mimeType="application/xhtml+xml" />
+                <data android:mimeType="image/svg+xml" />
+            </intent-filter>
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.WEB_SEARCH" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+                <category
+                    android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="" />
+                <data android:scheme="http" />
+                <data android:scheme="https" />
             </intent-filter>
         </activity>
-        <meta-data
-            android:name="com.droi.sdk.application_id"
-            android:value="zfnumbzhSh4xcOMFUqYI70AmnEJq680hlQAAL8gp" />
-        <meta-data
-            android:name="com.droi.sdk.channel_name"
-            android:value="Test" />
+        <activity
+            android:label="文件选择器"
+            android:name=".FileSelector">
+            <intent-filter>
+                <action
+                    android:name="android.provider.action.BROWSE" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+                <data
+                    android:mimeType="vnd.android.document/root" />
+            </intent-filter>
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.VIEW" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+                <data
+                    android:mimeType="vnd.android.document/root" />
+            </intent-filter>
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.PICK" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+                <action
+                    android:name="android.intent.action.MEDIA_MOUNTED" />
+                <action
+                    android:name="android.intent.action.MEDIA_UNMOUNTED" />
+                <data android:scheme="file" />
+                <data
+                    android:authorities="com.android.fileexplorer.fileprovider"
+                    android:scheme="content" />
+            </intent-filter>
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.PICK" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.PICK" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+                <data
+                    android:mimeType="*/*"
+                    android:scheme="file" />
+                <data
+                    android:authorities="com.android.fileexplorer.fileprovider"
+                    android:mimeType="*/*"
+                    android:scheme="content" />
+            </intent-filter>
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.PICK" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/*" />
+                <data android:mimeType="video/*" />
+                <data android:mimeType="audio/*" />
+            </intent-filter>
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.GET_CONTENT" />
+                <category
+                    android:name="android.intent.category.OPENABLE" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="*/*" />
+            </intent-filter>
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.RINGTONE_PICKER" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+                <category
+                    android:name="android.intent.category.OPENABLE" />
+            </intent-filter>
+            <intent-filter>
+                <action
+                    android:name="miui.intent.action.PICK_FOLDER" />
+                <category
+                    android:name="android.intent.category.OPENABLE" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action
+                    android:name="miui.intent.action.PICK_MULTIPLE" />
+                <category
+                    android:name="android.intent.category.OPENABLE" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action
+                    android:name="miui.intent.action.OPEN" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="file" />
+                <data
+                    android:authorities="com.android.fileexplorer.fileprovider"
+                    android:scheme="content" />
+            </intent-filter>
+            <intent-filter>
+                <action
+                    android:name="miui.intent.action.OPEN" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 </manifest>

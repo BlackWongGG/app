@@ -16,6 +16,7 @@ import 间.收集.有序列表;
 import 间.注解.函数;
 import 间.安卓.工具.应用.信息;
 import java.lang.annotation.Annotation;
+import 间.安卓.工具.调用;
 
 @滑动返回
 public class FileSelector extends 基本界面 {
@@ -41,7 +42,7 @@ public class FileSelector extends 基本界面 {
         布局.列表.置适配器(适配器);
         弹窗 = new 列表弹窗(this);
         弹窗.置标题("常用目录");
- 
+
         添加("图片保存", "%Pictures");
         添加("系统拍照", "%DCIM/Camera");
         添加("系统截图", "%DCIM/Screenshots");
@@ -59,15 +60,19 @@ public class FileSelector extends 基本界面 {
 
         应用 = new 列表弹窗();
         应用.置标题("选择已安装的应用");
-        
-        有序列表<应用.信息> $所有 = 间.安卓.工具.应用.取所有应用();
-        添加应用($所有);
 
         菜单 = 取菜单();
-        菜单.添加("快捷目录", 注解.配置(this, "目录"));
-        菜单.添加("所有应用", 注解.配置(this, "应用"));
+        菜单.添加("快捷目录", 配置("目录"));
+        菜单.添加("所有应用", 配置("应用"));
 
         适配器.重置("%");
+
+        调用.异步(this, "初始化");
+    }
+
+    void 初始化() {
+        有序列表<应用.信息> $所有 = 间.安卓.工具.应用.取所有应用();
+        添加应用($所有);
     }
 
     private void 添加应用(有序列表<应用.信息> $所有) {
@@ -82,15 +87,9 @@ public class FileSelector extends 基本界面 {
         }
     }
 
-    @函数("应用")
-    public void 搜索应用() {
-        应用.显示();
-    }
+    void 应用() { 应用.显示(); }
 
-    @函数("目录")
-    public void 快捷目录() {
-        弹窗.显示();
-    }
+    void 目录() { 弹窗.显示(); }
 
     public void 添加(String $名称, final String $目录) {
         if (文件.是目录($目录)) {
@@ -108,11 +107,21 @@ public class FileSelector extends 基本界面 {
         if (文件.是文件($地址)) {
             Intent $返回 = new Intent();
             $返回.setData(文件.取Uri($地址));
-            置返回值(返回码_成功);
+            置返回值(返回码_成功, $返回);
         } else {
             置返回值(返回码_失败);
         }
         结束界面();
+    }
+
+    @Override
+    public boolean 返回按下事件() {
+        if (适配器.可回退()) {
+            适配器.回退();
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }
