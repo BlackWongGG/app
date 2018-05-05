@@ -7,18 +7,16 @@ import hl4a.app.适配器.文件适配器;
 import 间.安卓.工具.应用;
 import 间.安卓.工具.文件;
 import 间.安卓.弹窗.列表弹窗;
-import 间.安卓.注解.滑动返回;
 import 间.安卓.组件.基本界面;
 import 间.安卓.视图.弹出菜单;
 import 间.工具.注解;
 import 间.接口.方法;
 import 间.收集.有序列表;
-import 间.注解.函数;
+import 间.注解.FN;
 import 间.安卓.工具.应用.信息;
 import java.lang.annotation.Annotation;
 import 间.安卓.工具.调用;
 
-@滑动返回
 public class FileSelector extends 基本界面 {
 
     private 布局_文件选择 布局;
@@ -30,6 +28,7 @@ public class FileSelector extends 基本界面 {
     @Override
     public void 界面创建事件(Bundle $恢复) {
         super.界面创建事件($恢复);
+        置滑动返回(true);
         置标题("选择文件");
         取标题栏().返回按钮(this);
         布局 = 打开布局(new 布局_文件选择(this));
@@ -60,6 +59,7 @@ public class FileSelector extends 基本界面 {
 
         应用 = new 列表弹窗();
         应用.置标题("选择已安装的应用");
+        应用.取编辑框().显示();
 
         菜单 = 取菜单();
         菜单.添加("快捷目录", 配置("目录"));

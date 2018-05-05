@@ -1,4 +1,5 @@
-package hl4a.app.视图;
+package hl4a.app.工具;
+
 import android.graphics.Paint;
 import android.graphics.Bitmap;
 import 间.安卓.工具.视图;

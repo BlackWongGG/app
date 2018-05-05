@@ -8,6 +8,7 @@ import 间.工具.时间;
 import 间.接口.回调方法;
 import 间.接口.返回值;
 import 间.安卓.工具.网络;
+import 间.安卓.工具.处理;
 
 public class 主页 extends 界面 {
 
@@ -21,7 +22,6 @@ public class 主页 extends 界面 {
 
         置标题("HL4A");
         置副标题("好消息 不行接受不了！");
-
     }
     
     private long 返回时间 = 时间.时间戳() - 23333;
@@ -31,10 +31,10 @@ public class 主页 extends 界面 {
         long 上次 = 返回时间;
         if ((返回时间 = 时间.时间戳()) - 上次 < 2333) {
             结束界面();
-            return true;
+            return false;
         } else {
             提示.普通("再按一次返回键退出 ~");
-            return false;
+            return true;
         }
     }
 

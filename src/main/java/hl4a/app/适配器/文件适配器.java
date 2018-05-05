@@ -3,27 +3,24 @@ package hl4a.app.适配器;
 import android.graphics.Bitmap;
 import hl4a.app.FileSelector;
 import hl4a.app.R;
+import hl4a.app.工具.图标工厂;
 import hl4a.app.布局.布局_适配器_文件;
-import hl4a.app.视图.图标工厂;
 import java.io.File;
 import 间.安卓.工具.图片;
-import 间.安卓.工具.处理;
 import 间.安卓.工具.提示;
 import 间.安卓.工具.文件;
+import 间.安卓.工具.调用;
 import 间.安卓.视图.实现.基本列表;
 import 间.安卓.视图.适配器.基本适配器;
-import 间.工具.引用;
 import 间.工具.时间;
 import 间.工具.线程池;
 import 间.接口.方法;
 import 间.收集.哈希表;
 import 间.收集.对象哈希表;
-import android.os.AsyncTask;
-import 间.安卓.工具.调用;
 
 public class 文件适配器 extends 基本适配器<布局_适配器_文件> {
 
-    private 线程池 加载 = new 线程池(5);
+    private 线程池 加载 = new 线程池(3);
     private 图标工厂 图标;
     private String 当前目录;
     private FileSelector 界面;
