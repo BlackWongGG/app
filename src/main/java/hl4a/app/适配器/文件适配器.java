@@ -43,7 +43,7 @@ public class 文件适配器 extends 基本适配器<布局_适配器_文件> {
 
         $列表.置项目单击事件(new 方法() {
                 @Override
-                public Object 调用(Object[] $参数) throws Exception {
+                public Object 调用(Object[] $参数) {
                     布局_适配器_文件 $视图 = (布局_适配器_文件)$参数[1];
                     if ($视图.文件 == null && 可回退()) {
                         回退();

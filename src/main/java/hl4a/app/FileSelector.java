@@ -79,7 +79,7 @@ public class FileSelector extends 基本界面 {
         for (final 应用.信息 $单个 : $所有) {
             应用.添加($单个.应用名 + "/" + $单个.包名, new 方法() {
                     @Override
-                    public Object 调用(Object[] $参数) throws Exception {
+                    public Object 调用(Object[] $参数) {
                         返回($单个.地址);
                         return null;
                     }
@@ -95,7 +95,7 @@ public class FileSelector extends 基本界面 {
         if (文件.是目录($目录)) {
             弹窗.添加($名称, new 方法() {
                     @Override
-                    public Object 调用(Object[] $参数) throws Exception {
+                    public Object 调用(Object[] $参数) {
                         适配器.重置($目录);
                         return null;
                     }

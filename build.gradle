@@ -18,5 +18,8 @@ android {
 dependencies {
     compile project (':HL4A/安卓')
     compile project (':HL4A/网络')
+ //   compile project (':HL4A/后端')
+    compile project (':HL4A/脚本')
+    compile project(':HL4A/编辑器')
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }
