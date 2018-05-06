@@ -29,9 +29,9 @@ public class FileSelector extends 基本界面 {
     public void 界面创建事件(Bundle $恢复) {
         super.界面创建事件($恢复);
         置滑动返回(true);
-        置标题("选择文件");
-        取标题栏().返回按钮(this);
         布局 = 打开布局(new 布局_文件选择(this));
+        置标题栏(布局.取标题栏());
+        置标题("选择文件");
         适配器 = new 文件适配器(this, 布局.列表) {
             @Override public void 重置(String $目录) {
                 super.重置($目录);
@@ -57,7 +57,7 @@ public class FileSelector extends 基本界面 {
         添加("贴吧图片", "%tieba");
         添加("酷安APK下载", "%Android/data/com.coolapk.market/files/Download");
 
-        应用 = new 列表弹窗();
+        应用 = new 列表弹窗(this);
         应用.置标题("选择已安装的应用");
         应用.取编辑框().显示();
 

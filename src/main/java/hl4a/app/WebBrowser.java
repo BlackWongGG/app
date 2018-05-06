@@ -9,7 +9,7 @@ import 间.网络.资源;
 import 间.网络.连接;
 import 间.接口.回调方法;
 import 间.接口.返回值;
-import 间.接口.单值回调;
+import 间.接口.单值方法;
 import 间.安卓.工具.设备;
 import 间.安卓.工具.处理;
 import 间.安卓.弹窗.列表弹窗;
