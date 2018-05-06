@@ -17,7 +17,7 @@ public class 主页 extends 界面 {
     @Override
     public void 界面创建事件(Bundle $恢复) {
         super.界面创建事件($恢复);
-
+        
         布局 = 打开布局(new 布局_主页(this));
         
         置标题("HL4A");

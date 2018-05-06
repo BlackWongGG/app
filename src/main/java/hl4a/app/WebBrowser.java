@@ -13,9 +13,11 @@ import 间.接口.单值方法;
 import 间.安卓.工具.设备;
 import 间.安卓.工具.处理;
 import 间.安卓.弹窗.列表弹窗;
+import hl4a.app.布局.布局_浏览器;
 
 public class WebBrowser extends 基本界面 {
 
+    布局_浏览器 布局;
     浏览器 浏览器;
     列表弹窗 列表;
 
@@ -25,12 +27,13 @@ public class WebBrowser extends 基本界面 {
         置滑动返回(true);
         Uri $链接 = getIntent().getData();
         if ($链接 == null) { 结束界面(); return; }
-        取标题栏().返回按钮(this);
-        
+
+        布局 = 打开布局(new 布局_浏览器(this));
+        浏览器 = 布局.浏览器;
+
         置标题($链接.toString());
-        浏览器 = 打开布局(new 浏览器(this));
         浏览器.置链接($链接.toString());
-      
+
         浏览器.置标题更换事件(代理("置标题"));
 
         取菜单().添加("复制链接", 配置("复制链接"));
@@ -124,7 +127,7 @@ public class WebBrowser extends 基本界面 {
     }
 
     void 添加标识(String $名称, String $标识) {
-        
+
         列表.添加($名称, 配置("设置标识", $标识));
 
     }
@@ -133,7 +136,7 @@ public class WebBrowser extends 基本界面 {
 
         浏览器.getSettings().setUserAgentString($标识);
         浏览器.reload();
-        
+
         提示.普通("设置成功 ~");
 
     }

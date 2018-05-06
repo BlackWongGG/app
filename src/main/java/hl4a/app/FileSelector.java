@@ -30,7 +30,6 @@ public class FileSelector extends 基本界面 {
         super.界面创建事件($恢复);
         置滑动返回(true);
         布局 = 打开布局(new 布局_文件选择(this));
-        置标题栏(布局.取标题栏());
         置标题("选择文件");
         适配器 = new 文件适配器(this, 布局.列表) {
             @Override public void 重置(String $目录) {
