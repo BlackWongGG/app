@@ -4,19 +4,20 @@ import 间.安卓.视图.列表视图;
 import android.content.Context;
 import android.view.ViewGroup;
 import hl4a.app.适配器.脚本适配器;
+import 间.安卓.组件.基本界面;
 
 public class 脚本列表视图 extends 列表视图 {
    
     private 脚本适配器 适配器;
     
-    public 脚本列表视图(Context $上下文) {
+    public 脚本列表视图(基本界面 $上下文) {
         super($上下文);
         适配器 = new 脚本适配器($上下文);
         置适配器(适配器);
     }
     
-    public 脚本列表视图(ViewGroup $父视图) {
-        this($父视图.getContext());
+    public 脚本列表视图(基本界面 $上下文,ViewGroup $父视图) {
+        this($上下文);
         加入到($父视图);
     }
     

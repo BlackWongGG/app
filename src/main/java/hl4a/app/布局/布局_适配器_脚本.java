@@ -9,6 +9,9 @@ import 间.安卓.资源.图标;
 import java.io.File;
 import hl4a.app.适配器.文件适配器;
 import 间.安卓.工具.文件;
+import 间.安卓.工具.绘画;
+import android.graphics.drawable.BitmapDrawable;
+import hl4a.app.R;
 
 public class 布局_适配器_脚本 extends 线性布局 {
     
@@ -21,6 +24,7 @@ public class 布局_适配器_脚本 extends 线性布局 {
     
     public 布局_适配器_脚本(Context $上下文) {
         super($上下文);
+        置背景颜色("白色");
         置左填充("16dp");
         置上下填充("8dp");
         置方向("水平");
@@ -35,7 +39,9 @@ public class 布局_适配器_脚本 extends 线性布局 {
         其他.置宽度("自动");
         其他.置重力("中间");
         编辑 = new 线性按钮(其他);
+        编辑.置图片(R.drawable.ic_edit_black_24dp);
         更多 = new 线性按钮(其他);
+        更多.置图片(R.drawable.ic_more_vert_black_24dp);
     }
 
     public void 加载从文件(File $文件) {

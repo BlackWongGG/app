@@ -1,16 +1,21 @@
 package hl4a.app.适配器;
 
+import android.content.Context;
 import hl4a.app.布局.布局_适配器_脚本;
 import java.io.File;
 import 间.安卓.视图.适配器.基本适配器;
 import 间.工具.文件;
+import 间.接口.方法;
 import 间.收集.对象哈希表;
-import android.content.Context;
+import 间.安卓.组件.基本界面;
 
 public class 脚本适配器 extends 基本适配器<布局_适配器_脚本> {
 
-    public 脚本适配器(Context $上下文) {
+    private 基本界面 界面;
+    
+    public 脚本适配器(基本界面 $上下文) {
         super($上下文);
+        界面 = $上下文;
     }
     
     @Override
@@ -46,6 +51,14 @@ public class 脚本适配器 extends 基本适配器<布局_适配器_脚本> {
         File $文件 = $参数.读取("文件");
         
         $视图.加载从文件($文件);
+        
+        $视图.编辑.置单击事件(new 方法() {
+                @Override
+                public Object 调用(Object[] $参数) {
+                   // 界面.跳转界面();
+                    return null;
+                }
+            });
         
         return $视图;
     }
