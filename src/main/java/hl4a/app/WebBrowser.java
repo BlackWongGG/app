@@ -31,6 +31,8 @@ public class WebBrowser extends 基本界面 {
         布局 = 打开布局(new 布局_浏览器(this));
         浏览器 = 布局.浏览器;
 
+        取导航按钮().结束界面(this);
+        
         置标题($链接.toString());
         浏览器.置链接($链接.toString());
 
