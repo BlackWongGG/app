@@ -40,6 +40,7 @@ public class 编辑界面 extends 界面 {
         取标题栏().新按钮(图标.启动, new 方法() {
                 @Override
                 public Object 调用(Object[] $参数) {
+                    保存();
                     脚本界面.跳转脚本(取界面(), null, 文件.getPath());
                     return null;
                 }
@@ -70,9 +71,20 @@ public class 编辑界面 extends 界面 {
             结束界面();
             提示.警告("文件不存在 ~");
         } else {
-            字符.保存(文件.getPath(), 布局.代码.取文本());
+            保存();
         }
     }
 
+    @Override
+    public void 界面销毁事件() {
+        super.界面销毁事件();
+        if (文件.isFile()) {
+            保存();
+        }
+    }
+
+    private void 保存() {
+        字符.保存(文件.getPath(), 布局.代码.取文本());
+    }
 
 }

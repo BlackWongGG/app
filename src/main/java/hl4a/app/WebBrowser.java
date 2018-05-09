@@ -2,40 +2,45 @@ package hl4a.app;
 
 import android.net.Uri;
 import android.os.Bundle;
-import 间.安卓.工具.提示;
-import 间.安卓.组件.基本界面;
-import 间.安卓.视图.浏览器;
-import 间.网络.资源;
-import 间.网络.连接;
-import 间.接口.回调方法;
-import 间.接口.返回值;
-import 间.接口.单值方法;
-import 间.安卓.工具.设备;
-import 间.安卓.工具.处理;
-import 间.安卓.弹窗.列表弹窗;
 import hl4a.app.布局.布局_浏览器;
+import 间.安卓.工具.提示;
+import 间.安卓.工具.设备;
+import 间.安卓.弹窗.列表弹窗;
+import 间.安卓.组件.基本界面;
+import 间.安卓.脚本.JavaScript;
+import 间.安卓.脚本.基本脚本;
+import 间.安卓.视图.浏览器;
+import 间.接口.方法;
+import 间.接口.简单方法;
+import 间.收集.哈希表;
 
 public class WebBrowser extends 基本界面 {
 
     布局_浏览器 布局;
     浏览器 浏览器;
     列表弹窗 列表;
+    Uri 链接;
+
+    基本脚本 当前环境;
+    哈希表<String,方法> 事件表 = new 哈希表<>();
 
     @Override
     public void 界面创建事件(Bundle $恢复) {
         super.界面创建事件($恢复);
         置滑动返回(true);
-        Uri $链接 = getIntent().getData();
-        if ($链接 == null) { 结束界面(); return; }
+        链接 = getIntent().getData();
+        if (链接 == null) { 结束界面(); return; }
 
         布局 = 打开布局(new 布局_浏览器(this));
         浏览器 = 布局.浏览器;
 
 		取导航按钮().结束界面(this);
-        置标题($链接.toString());
-        浏览器.置链接($链接.toString());
 
-        浏览器.置标题更换事件(代理("置标题"));
+        浏览器.置标题更换事件(代理("处理标题"));
+
+        置标题(链接.toString());
+
+        浏览器.置链接(链接.toString());
 
         取菜单().添加("复制链接", 配置("复制链接"));
         取菜单().添加("复制源码", 配置("复制源码"));
@@ -110,6 +115,13 @@ public class WebBrowser extends 基本界面 {
         添加标识("手机 : UCOpenwave", "Openwave/ UCWEB7.0.2.37/28/999");
 
         添加标识("手机 : UC Opera", "Mozilla/4.0 (compatible; MSIE 6.0; ) Opera/UCWEB7.0.2.37/28/999");
+
+    }
+
+    void 处理标题(String $标题) {
+
+        置标题($标题);
+
     }
 
     void 复制链接() {
