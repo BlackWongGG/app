@@ -78,11 +78,18 @@ public class 编辑界面 extends 界面 {
     }
 
     @Override
-    public void 界面销毁事件() {
-        super.界面销毁事件();
+    public void 离开界面事件() {
         if (文件.isFile()) {
             保存();
         }
+    }
+
+    @Override
+    public boolean 返回按下事件() {
+        if (文件.isFile()) {
+            保存();
+        }
+        return false;
     }
 
     private void 保存() {
