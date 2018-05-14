@@ -136,7 +136,7 @@ public class WebBrowser extends 基本界面 {
 
     void 选择标识() {
         列表.显示();
-        提示.普通("请选择浏览器标识 ~");
+        提示.吐司.普通("请选择浏览器标识 ~");
     }
 
     void 添加标识(String $名称, String $标识) {

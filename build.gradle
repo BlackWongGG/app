@@ -4,7 +4,7 @@ android {
 
     compileSdkVersion 19
     buildToolsVersion '21.1.0'
-
+    
     defaultConfig {
         applicationId 'hl4a.app'
        	minSdkVersion 14
@@ -18,7 +18,7 @@ android {
 dependencies {
     compile project (':HL4A/安卓')
     compile project (':HL4A/网络')
- //   compile project (':HL4A/后端')
+    compile project (':HL4A/后端')
     compile project (':HL4A/脚本')
     compile project(':HL4A/编辑器')
     compile fileTree(dir: 'libs', include: ['*.jar'])

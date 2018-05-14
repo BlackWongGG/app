@@ -13,15 +13,17 @@ public class 布局_主页 extends 布局_标题界面 {
 
     public 标签滑动 滑动;
     public 本地 本地;
+    public 我的 我的;
     
     public 布局_主页(界面 $上下文) {
         super($上下文);
         取标题栏().置阴影(0);
         滑动 = new 标签滑动(this);
         滑动.添加("本地",本地 = new 本地($上下文.取界面()));
+        滑动.添加("我的",我的 = new 我的());
     }
     
-    public class 本地 extends 界面底层 {
+    public class 本地 extends 线性布局 {
         
         public 脚本列表视图 列表;
         
@@ -32,4 +34,12 @@ public class 布局_主页 extends 布局_标题界面 {
         
     }
 
+    public class 我的 extends 线性布局 {
+        
+        public 我的() {
+            super(布局_主页.this.getContext());
+        }
+        
+    }
+    
 }
