@@ -3,11 +3,11 @@ package hl4a.app.布局;
 import hl4a.app.视图.脚本列表视图;
 import 间.安卓.内容.界面;
 import 间.安卓.组件.基本界面;
+import 间.安卓.视图.列表视图;
 import 间.安卓.视图.扩展.标签滑动;
 import 间.安卓.视图.线性布局;
+import 间.安卓.视图.适配器.数组适配器;
 import 间.安卓.资源.布局.布局_标题界面;
-import android.support.design.widget.FloatingActionButton;
-import 间.安卓.视图.界面底层;
 
 public class 布局_主页 extends 布局_标题界面 {
 
@@ -36,8 +36,11 @@ public class 布局_主页 extends 布局_标题界面 {
 
     public class 手册 extends 线性布局 {
         
+        public 列表视图 帮助;
+        
         public 手册() {
             super(布局_主页.this.getContext());
+            帮助 = new 列表视图(this);
         }
         
     }

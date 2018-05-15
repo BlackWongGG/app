@@ -42,7 +42,7 @@ public class 布局_适配器_脚本 extends 线性布局 {
         编辑 = new 线性按钮(其他);
         编辑.置图片(R.drawable.ic_edit_black_24dp);
         更多 = new 线性按钮(其他);
-        更多.置图片(R.drawable.ic_more_vert_black_24dp);;
+        更多.置图片(R.drawable.ic_more_vert_black_24dp);
     }
 
     public void 加载从文件(File $文件) {

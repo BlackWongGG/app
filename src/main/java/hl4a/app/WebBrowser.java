@@ -24,6 +24,8 @@ public class WebBrowser extends 基本界面 {
     基本脚本 当前环境;
     哈希表<String,方法> 事件表 = new 哈希表<>();
 
+    private boolean 固定内容 = false;
+
     @Override
     public void 界面创建事件(Bundle $恢复) {
         super.界面创建事件($恢复);
@@ -36,15 +38,25 @@ public class WebBrowser extends 基本界面 {
 
 		取导航按钮().结束界面(this);
 
+        取菜单().添加("复制链接", 配置("复制链接"));
+        取菜单().添加("刷新网页", 配置("刷新网页"));
+        
         浏览器.置标题更换事件(代理("处理标题"));
 
-        置标题(链接.toString());
+        String $标题 = getIntent().getStringExtra("标题");
+
+        if ($标题 == null) {
+            置标题(链接.toString());
+            取菜单().添加("复制源码", 配置("复制源码"));
+            取菜单().添加("设置标识", 配置("选择标识"));
+        } else {
+            置标题($标题);
+            固定内容 = true;
+            浏览器.置地址可变(false);
+        }
+
 
         浏览器.置链接(链接.toString());
-
-        取菜单().添加("复制链接", 配置("复制链接"));
-        取菜单().添加("复制源码", 配置("复制源码"));
-        取菜单().添加("设置标识", 配置("选择标识"));
 
         列表 = new 列表弹窗(this);
 
@@ -119,7 +131,7 @@ public class WebBrowser extends 基本界面 {
     }
 
     void 处理标题(String $标题) {
-
+        if (固定内容) return;
         置标题($标题);
 
     }
@@ -136,7 +148,12 @@ public class WebBrowser extends 基本界面 {
 
     void 选择标识() {
         列表.显示();
-        提示.吐司.普通("请选择浏览器标识 ~");
+        提示.吐司.普通提示("请选择浏览器标识 ~");
+    }
+    
+    void 刷新网页() {
+        浏览器.reload();
+        提示.普通("正在刷新 ~");
     }
 
     void 添加标识(String $名称, String $标识) {

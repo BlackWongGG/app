@@ -25,7 +25,6 @@ public class 脚本适配器 extends 基本适配器<布局_适配器_脚本> {
     public 脚本适配器(基本界面 $上下文) {
         super($上下文);
         界面 = $上下文;
-        进度 = new 进度弹窗($上下文);
     }
 
     @Override
@@ -56,8 +55,6 @@ public class 脚本适配器 extends 基本适配器<布局_适配器_脚本> {
         发送更新事件();
 
     }
-
-    private 进度弹窗 进度;
 
     @Override
     public 布局_适配器_脚本 处理(布局_适配器_脚本 $视图, I对象哈希表 $参数) {
@@ -107,8 +104,6 @@ public class 脚本适配器 extends 基本适配器<布局_适配器_脚本> {
         $视图.置单击事件(new 简单方法(处理.异步) {
                 @Override
                 public void 调用() {
-                    进度.更新("正在打开 ~");
-                    进度.显示();
                     脚本界面.跳转脚本(界面,null,$文件.getPath());
                 }
             }.构建());
