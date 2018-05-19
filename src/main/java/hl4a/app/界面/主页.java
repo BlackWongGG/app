@@ -66,10 +66,10 @@ public class 主页 extends 界面 {
                 public Boolean 调用(Object[] $参数) {
                     String $地址 = 信息.脚本 + "/" + 布局_新建.输入.取文本() + ".js";
                     if (布局_新建.输入.取文本().toString().isEmpty()) {
-                        提示.吐司.警告提示("不要留空 ~");
+                        提示.吐司.警告("不要留空 ~");
                         return true;
                    }  else if (文件.是文件($地址)) {
-                        提示.吐司.警告提示("该脚本已存在 ~");
+                        提示.吐司.警告("该脚本已存在 ~");
                         return true;
                     } else {
                         提示.普通("创建成功 ~");

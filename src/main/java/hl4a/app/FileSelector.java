@@ -68,6 +68,7 @@ public class FileSelector extends 基本界面 {
         适配器.重置("%");
 
         调用.异步(this, "初始化");
+        
     }
 
     void 初始化() {
@@ -104,7 +105,7 @@ public class FileSelector extends 基本界面 {
     }
 
     public void 返回(String $地址) {
-        if (文件.是文件($地址)) {
+        if ($地址 != null) {
             Intent $返回 = new Intent();
             $返回.setData(文件.取Uri($地址));
             置返回值(返回码_成功, $返回);
