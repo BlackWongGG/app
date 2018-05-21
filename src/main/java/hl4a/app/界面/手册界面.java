@@ -19,6 +19,7 @@ import 间.收集.对象哈希表;
 import 间.数据.YAML;
 import 间.网络.资源;
 import 间.网络.连接;
+import android.text.SpannableStringBuilder;
 
 public class 手册界面 extends 界面 {
 
@@ -31,6 +32,7 @@ public class 手册界面 extends 界面 {
         置标题("HL4A 手册");
         取导航按钮().结束界面(this);
         布局.刷新.刷新(233);
+        new SpannableStringBuilder();
     }
     
     public class 布局_手册界面 extends 布局_标题界面 {
