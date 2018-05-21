@@ -1,18 +1,18 @@
 package hl4a.app;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import hl4a.app.布局.布局_浏览器;
 import 间.安卓.工具.提示;
 import 间.安卓.工具.设备;
 import 间.安卓.弹窗.列表弹窗;
 import 间.安卓.组件.基本界面;
-import 间.安卓.脚本.JavaScript;
 import 间.安卓.脚本.基本脚本;
 import 间.安卓.视图.浏览器;
+import 间.安卓.资源.布局.布局_标题界面;
 import 间.接口.方法;
-import 间.接口.简单方法;
 import 间.收集.哈希表;
+import android.webkit.WebView;
 
 public class WebBrowser extends 基本界面 {
 
@@ -33,7 +33,7 @@ public class WebBrowser extends 基本界面 {
         链接 = getIntent().getData();
         if (链接 == null) { 结束界面(); return; }
 
-        布局 = 打开布局(new 布局_浏览器(this));
+        布局 = 打开布局(new 布局_浏览器());
         浏览器 = 布局.浏览器;
 
 		取导航按钮().结束界面(this);
@@ -170,6 +170,16 @@ public class WebBrowser extends 基本界面 {
         提示.普通("设置成功 ~");
 
     }
+    
+    public class 布局_浏览器 extends 布局_标题界面 {
 
+        public 浏览器 浏览器;
+
+        public 布局_浏览器() {
+            super(WebBrowser.this);
+            浏览器 = new 浏览器(this);
+        }
+
+    }
 
 }

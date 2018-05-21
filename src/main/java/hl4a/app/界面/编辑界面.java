@@ -20,8 +20,6 @@ public class 编辑界面 extends 界面 {
     public void 界面创建事件(Bundle $恢复) {
         super.界面创建事件($恢复);
 
-        置滑动返回(true);
-        
         文件 = 取传入参数(0);
 
         if (文件 == null) {

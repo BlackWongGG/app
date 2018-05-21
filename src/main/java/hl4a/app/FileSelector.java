@@ -2,20 +2,17 @@ package hl4a.app;
 
 import android.content.Intent;
 import android.os.Bundle;
-import hl4a.app.布局.布局_文件选择;
 import hl4a.app.适配器.文件适配器;
 import 间.安卓.工具.应用;
 import 间.安卓.工具.文件;
+import 间.安卓.工具.调用;
 import 间.安卓.弹窗.列表弹窗;
 import 间.安卓.组件.基本界面;
+import 间.安卓.视图.列表视图;
 import 间.安卓.视图.弹出菜单;
-import 间.工具.注解;
+import 间.安卓.资源.布局.布局_标题界面;
 import 间.接口.方法;
 import 间.收集.有序列表;
-import 间.注解.FN;
-import 间.安卓.工具.应用.信息;
-import java.lang.annotation.Annotation;
-import 间.安卓.工具.调用;
 
 public class FileSelector extends 基本界面 {
 
@@ -28,8 +25,7 @@ public class FileSelector extends 基本界面 {
     @Override
     public void 界面创建事件(Bundle $恢复) {
         super.界面创建事件($恢复);
-        置滑动返回(true);
-        布局 = 打开布局(new 布局_文件选择(this));
+        布局 = 打开布局(new 布局_文件选择());
         取导航按钮().结束界面(this);
         置标题("选择文件");
         适配器 = new 文件适配器(this, 布局.列表) {
@@ -123,6 +119,17 @@ public class FileSelector extends 基本界面 {
         } else {
             return false;
         }
+    }
+    
+    public class 布局_文件选择 extends 布局_标题界面 {
+
+        public 列表视图 列表;
+
+        public 布局_文件选择() {
+            super(FileSelector.this);
+            列表 = new 列表视图(this);
+        }
+
     }
 
 }

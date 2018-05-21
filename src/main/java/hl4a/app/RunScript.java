@@ -26,7 +26,6 @@ public class RunScript extends 基本界面 {
     @Override
     public void 界面创建事件(Bundle $恢复) {
         super.界面创建事件($恢复);
-        置滑动返回(true);
         Uri $地址 = getIntent().getData();
         if ($地址 == null) {
             结束界面();
